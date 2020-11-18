@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import JoinGame from "./components/joinGame";
+import StartNewGame from "./components/startNewGame";
+import "./cssFiles/styles.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/join" component={JoinGame} />
+        <Route path="/start" component={StartNewGame} />
+      </Switch>
+    </Router>
+  );
+};
+const Home = () => {
+  return (
+    <div>
+      <h2>Welcome to Bingo MultiPlayer App</h2>
+      <Link to="/join" className="btn btn-primary m-3">
+        Join a Game
+      </Link>
+      <Link to="/start" className="btn btn-primary">
+        New Game
+      </Link>
     </div>
   );
-}
-
+};
 export default App;
